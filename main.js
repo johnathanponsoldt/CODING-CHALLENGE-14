@@ -19,3 +19,17 @@ async function submitOrder(order) {
 submitOrder({ items: [] })
     .then(response => console.log('Order submitted:', response))
     .catch(error => console.error('Error:', error.message));  // Test case: Order with no items
+
+    async function finalizeTransaction(order) {
+        try {
+            console.log('Processing order...');
+            // Simulate a failure
+            if (!order.items.length) throw new Error('Order is empty');
+            console.log('Order processed successfully');
+        } catch (error) {
+            console.error('Error:', error.message);
+        } finally {
+            console.log('Closing database connection');
+        }
+    }
+    
